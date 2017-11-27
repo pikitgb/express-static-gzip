@@ -1,4 +1,5 @@
 var serveStatic = require("serve-static");
+var mime = serveStatic.mime;
 
 var Middleware = require("./src/middleware");
 var CompressionHandler = require("./src/compression-handler");
