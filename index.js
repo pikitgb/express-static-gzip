@@ -1,7 +1,8 @@
 var serveStatic = require("serve-static");
-var mime = serveStatic.mime;
 
 var Middleware = require("./src/middleware");
+Middleware.setMime(serveStatic.mime);
+
 var CompressionHandler = require("./src/compression-handler");
 
 module.exports = expressStaticGzip;

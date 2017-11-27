@@ -1,9 +1,14 @@
-var mime = require("mime");
+var mimeInstance = null;
 var CompressionHandler = require("./compression-handler");
 
 module.exports = {
-    create: createMiddleware
+    create: createMiddleware,
+    setMime: setMime
 };
+
+function setMime(mime){
+    mimeInstance = mime;
+}
 
 /**
  * 
@@ -41,8 +46,8 @@ function createMiddleware(serveStatic, files, options) {
      * @param {Object} res
      */
 function convertToCompressedRequest(req, res, compression) {
-    var type = mime.lookup(req.path);
-    var charset = mime.charsets.lookup(type);
+    var type = mimeInstance.lookup(req.path);
+    var charset = mimeInstance.charsets.lookup(type);
     var search = req.url.split('?').splice(1).join('?');
 
     if (search !== "") {

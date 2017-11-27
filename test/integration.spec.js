@@ -1,5 +1,8 @@
 const expect = require("chai").expect;
+
 const Middleware = require("../src/middleware");
+Middleware.setMime(require("mime"));
+
 const compressionHandler = require("../src/compression-handler");
 
 const testPort = 1337;
