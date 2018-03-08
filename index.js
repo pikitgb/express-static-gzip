@@ -28,7 +28,10 @@ function expressStaticGzip(rootFolder, options) {
         findAllCompressionFiles(require("fs"), rootFolder);
     }
 
-    return function middleware(req, res, next) {
+    return function middleware(request, response, next) {
+        var req      = request.request;
+        var response = response.response;
+        
         changeUrlFromEmptyToIndexHtml(req);
 
         //get browser's' supported encodings
